@@ -47,12 +47,12 @@ public class StudentServiceTests
     {
         var result = _service.GroupStudentsByFaculty();
         Assert.AreEqual(2, result.Count);
-        
+
         var fitStudents = result["ФИТ"].ToList();
         Assert.AreEqual(2, fitStudents.Count);
         Assert.IsTrue(fitStudents.Any(s => s.Name == "Иван"));
         Assert.IsTrue(fitStudents.Any(s => s.Name == "Анна"));
-        
+
         var economyStudents = result["Экономика"].ToList();
         Assert.AreEqual(1, economyStudents.Count);
         Assert.IsTrue(economyStudents.Any(s => s.Name == "Петр"));

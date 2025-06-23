@@ -17,7 +17,6 @@ public class StudentService
     public IEnumerable<Student> GetStudentsByFaculty(string faculty)
     => _students.Where(student => student.Faculty.Equals(faculty));
 
-
     // 2. Возвращает студентов со средним баллом >= minAverageGrade
     public IEnumerable<Student> GetStudentsWithMinAverageGrade(double minAverageGrade)
     => _students.Where(student => student.Grades.Average() >= minAverageGrade);
