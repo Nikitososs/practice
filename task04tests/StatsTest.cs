@@ -12,6 +12,14 @@ public class SpaceshipTests
     }
 
     [Fact]
+    public void Fighter_ShouldHaveCorrectStats()
+    {
+        ISpaceship fighter = new Fighter();
+        Assert.Equal(100, fighter.Speed);
+        Assert.Equal(25, fighter.FirePower);
+    }
+
+    [Fact]
     public void Fighter_ShouldBeFasterThanCruiser()
     {
         var fighter = new Fighter();
@@ -20,10 +28,10 @@ public class SpaceshipTests
     }
 
     [Fact]
-    public void Fighter_ShouldHaveCorrectStats()
+    public void Cruiser_ShouldBeStrongerThanCruiser()
     {
-        ISpaceship fighter = new Fighter();
-        Assert.Equal(100, fighter.Speed);
-        Assert.Equal(25, fighter.FirePower);
+        var fighter = new Fighter();
+        var cruiser = new Cruiser();
+        Assert.True(fighter.FirePower < cruiser.FirePower);
     }
 }
