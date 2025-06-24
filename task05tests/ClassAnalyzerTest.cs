@@ -4,7 +4,7 @@ using task05;
 public class TestClass
 {
     public int PublicField;
-    private string _privateField;
+    private string _privateField = string.Empty;
 
     public int Property { get; set; }
     private int PropertyPrivate { get; set; }
