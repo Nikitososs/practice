@@ -1,11 +1,11 @@
-[TestFixture]
+using Xunit;
+using task2;
 public class StudentServiceTests
 {
     private List<Student> _testStudents;
     private StudentService _service;
 
-    [SetUp]
-    public void Setup()
+    public StudentServiceTests()
     {
         _testStudents = new List<Student>
         {
@@ -16,52 +16,52 @@ public class StudentServiceTests
         _service = new StudentService(_testStudents);
     }
 
-    [Test]
+    [Fact]
     public void GetStudentsByFaculty_ReturnsCorrectStudents()
     {
         var result = _service.GetStudentsByFaculty("ФИТ").ToList();
-        Assert.AreEqual(2, result.Count);
-        Assert.IsTrue(result.All(s => s.Faculty == "ФИТ"));
+        Assert.Equal(2, result.Count);
+        Assert.True(result.All(s => s.Faculty == "ФИТ"));
     }
 
-    [Test]
+    [Fact]
     public void GetStudentsWithMinAverageGrade_ReturnsCorrectStudents()
     {
         var result = _service.GetStudentsWithMinAverageGrade(4).ToList();
-        Assert.AreEqual(2, result.Count);
-        Assert.IsTrue(result.Any(s => s.Name == "Иван"));
-        Assert.IsTrue(result.Any(s => s.Name == "Петр"));
+        Assert.Equal(2, result.Count);
+        Assert.Contains(result, s => s.Name == "Иван");
+        Assert.Contains(result, s => s.Name == "Петр");
     }
 
-    [Test]
+    [Fact]
     public void GetStudentsOrderedByName_ReturnsCorrectStudents()
     {
         var result = _service.GetStudentsOrderedByName().ToList();
-        Assert.AreEqual("Анна", result[0].Name);
-        Assert.AreEqual("Иван", result[1].Name);
-        Assert.AreEqual("Петр", result[2].Name);
+        Assert.Equal("Анна", result[0].Name);
+        Assert.Equal("Иван", result[1].Name);
+        Assert.Equal("Петр", result[2].Name);
     }
 
-    [Test]
+    [Fact]
     public void GroupStudentsByFaculty_ReturnsCorrectStudents()
     {
         var result = _service.GroupStudentsByFaculty();
-        Assert.AreEqual(2, result.Count);
+        Assert.Equal(2, result.Count);
 
         var fitStudents = result["ФИТ"].ToList();
-        Assert.AreEqual(2, fitStudents.Count);
-        Assert.IsTrue(fitStudents.Any(s => s.Name == "Иван"));
-        Assert.IsTrue(fitStudents.Any(s => s.Name == "Анна"));
+        Assert.Equal(2, fitStudents.Count);
+        Assert.Contains(fitStudents, s => s.Name == "Иван");
+        Assert.Contains(fitStudents, s => s.Name == "Анна");
 
         var economyStudents = result["Экономика"].ToList();
-        Assert.AreEqual(1, economyStudents.Count);
-        Assert.IsTrue(economyStudents.Any(s => s.Name == "Петр"));
+        Assert.Single(economyStudents);
+        Assert.Contains(economyStudents, s => s.Name == "Петр");
     }
 
-    [Test]
+    [Fact]
     public void GetFacultyWithHighestAverageGrade_ReturnsCorrectFaculty()
     {
         var result = _service.GetFacultyWithHighestAverageGrade();
-        Assert.AreEqual("Экономика", result);
+        Assert.Equal("Экономика", result);
     }
 }
