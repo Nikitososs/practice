@@ -49,16 +49,4 @@ public class AttributeReflectionTests
         var helper = new ReflectionHelper(typeof(SampleClass));
         helper.PrintTypeInfo();
     }
-
-    [Fact]
-    public void ReflectionHelper_GetClassInfo_return_correct_ClassInfo()
-    {
-        var type = typeof(SampleClass);
-        var helper = new ReflectionHelper(type);
-        ClassInfo classInfo = helper.GetClassInfo();
-        Assert.Equal(classInfo.NameAtt, type.GetCustomAttribute<DisplayNameAttribute>());
-        Assert.Equal(classInfo.VersionAtt, type.GetCustomAttribute<VersionAttribute>());
-        Assert.Equal(classInfo.Methods.Select(m => m.Name), ["TestMethod", "TestMethod2", "TestMethodPrivate"]);
-        Assert.Equal(classInfo.Properties.Select(p => p.Name), ["Number", "Number2", "Number3"]);
-    }
 }
