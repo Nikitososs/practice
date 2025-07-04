@@ -47,6 +47,13 @@ public class AttributeReflectionTests
     public void ReflectionHelper_test()
     {
         var helper = new ReflectionHelper(typeof(SampleClass));
+        var output = new StringWriter();
+        Console.SetOut(output);
+
+        var expectedValue = String.Join("\n",File.ReadAllLines("..\\..\\..\\expectedOutput.txt"));
+
         helper.PrintTypeInfo();
+
+        Assert.Equal(expectedValue, output.ToString());
     }
 }
