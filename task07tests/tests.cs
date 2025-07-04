@@ -50,7 +50,7 @@ public class AttributeReflectionTests
         var output = new StringWriter();
         Console.SetOut(output);
 
-        var expectedValue = String.Join("\n",File.ReadAllLines("..\\..\\..\\expectedOutput.txt"));
+        var expectedValue = String.Join("\n",File.ReadAllLines(Path.Combine("..", "..", "..", "expectedOutput.txt")));
 
         helper.PrintTypeInfo();
 
