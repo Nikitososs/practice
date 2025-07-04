@@ -52,13 +52,12 @@ public class FileSystemCommandsTests
         var output = new StringWriter();
         Console.SetOut(output);
         
-        var expectedValue = "Найденные файлы:\nfile1.txt\r\nРазмер каталога: 21\r\n";
+        var expectedValue = "Найденные файлы:\nfile1.txt\nРазмер каталога: 21\n";
 
         Programm.Main();
 
         Assert.Equal(expectedValue, output.ToString());
 
         Directory.Delete(testDir, true);
-
     }
 }
