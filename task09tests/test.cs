@@ -3,6 +3,7 @@ using LibInfoNs;
 using ConsoleMetadata;
 
 namespace task09tests;
+
 public class Task09tests
 {
     [Fact]
@@ -11,7 +12,7 @@ public class Task09tests
         var output = new StringWriter();
         Console.SetOut(output);
 
-        var expectedValue = String.Join("\n",File.ReadAllLines(Path.Combine("..", "..", "..", "expectedOutput.txt")));
+        var expectedValue = String.Join("\n", File.ReadAllLines(Path.Combine("..", "..", "..", "expectedOutput.txt")));
 
         Program.Main(["task07.dll"]);
 
