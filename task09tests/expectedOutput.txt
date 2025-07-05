@@ -1,0 +1,55 @@
+Библиотека: task07, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+
+Список классов:
+
+=====
+
+Класс: DisplayNameAttribute
+Аттрибуты:
+AttributeUsageAttribute
+
+Конструкторы:
+Имя: DisplayNameAttribute
+Параметры:
+Тип: String, Имя: name
+
+
+Методы:
+
+=====
+
+Класс: ReflectionHelper
+Аттрибуты:
+
+
+Конструкторы:
+Имя: ReflectionHelper
+Параметры:
+Тип: Type, Имя: type
+
+
+Методы:
+Имя: PrintTypeInfo
+Параметры: 
+
+Возвращаемый тип: Void
+
+
+=====
+
+Класс: VersionAttribute
+Аттрибуты:
+AttributeUsageAttribute
+
+Конструкторы:
+Имя: VersionAttribute
+Параметры:
+Тип: Int32, Имя: major
+Тип: Int32, Имя: minor
+
+
+Методы:
+
+=====
+
+
