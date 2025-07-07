@@ -30,7 +30,7 @@ public class PluginLoaderTest
 
         Directory.Delete(testDir, true);
     }
-    
+
     [Fact]
     public void PluginLoader_DirectoryNotExists_Ex()
     {

@@ -11,7 +11,7 @@ public class PluginLoader(string path)
     public void Load()
     {
         if (!Directory.Exists(_path)) throw new Exception("Неверный путь");
-        
+
         var loadedDlls = Directory.GetFiles(_path, "*.dll")
             .Select(dll => Assembly.LoadFrom(dll));
 
@@ -32,7 +32,7 @@ public class PluginLoader(string path)
     {
         if (Output == null) Output = [];
         int CanExecuted = 0;
-        
+
         _findedPlugins
             .Where(pl => !Output.Contains(pl))
             .Where(pl => (pl.GetCustomAttribute<PluginLoad>()?.Dependences ?? []).All(d => Output.Contains(d)))
