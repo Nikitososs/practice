@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task07", "task07\task07.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task07tests", "task07tests\task07tests.csproj", "{8D41EF2B-C52D-4C36-AE9B-77175D753C6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleMetadata", "ConsoleMetadata\ConsoleMetadata.csproj", "{FA103185-C7C3-4A10-996B-459A4331FC4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleMetadata", "task09\ConsoleMetadata\ConsoleMetadata.csproj", "{FA103185-C7C3-4A10-996B-459A4331FC4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task09tests", "task09tests\task09tests.csproj", "{1FA38196-D009-43D7-BB01-B0E25C0C0B62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibInfo", "LibInfo\LibInfo.csproj", "{E92835B7-A331-457F-910E-D082E57835CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibInfo", "task09\LibInfo\LibInfo.csproj", "{E92835B7-A331-457F-910E-D082E57835CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

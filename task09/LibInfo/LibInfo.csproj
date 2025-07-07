@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\task07\task07.csproj" />
+    <ProjectReference Include="..\..\task07\task07.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

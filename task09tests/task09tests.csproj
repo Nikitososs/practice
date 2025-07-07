@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibInfo\LibInfo.csproj" />
-    <ProjectReference Include="..\ConsoleMetadata\ConsoleMetadata.csproj" />
+    <ProjectReference Include="..\task09\LibInfo\LibInfo.csproj" />
+    <ProjectReference Include="..\task09\ConsoleMetadata\ConsoleMetadata.csproj" />
   </ItemGroup>
 
 </Project>
