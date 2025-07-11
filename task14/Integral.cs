@@ -6,7 +6,6 @@ public class DefiniteIntegral
     {
         double result = 0.0;
         double segment = (b - a) / threadsNumber;
-        object lockObj = new object();
 
         Barrier barrier = new Barrier(threadsNumber + 1);
         List<Thread> threads = Enumerable.Range(0, threadsNumber)
@@ -18,7 +17,7 @@ public class DefiniteIntegral
                 Thread thread = new Thread(() =>
                 {
                     double threadRes = SolveSingleThread(a_i, b_i, function, step);
-                    lock (lockObj) result += threadRes;
+                    UseInterlocked(threadRes, ref result);
                     barrier.SignalAndWait();
                 });
                 thread.Start();
@@ -41,5 +40,12 @@ public class DefiniteIntegral
 
         integral += (function(a) + function(b)) / 2;
         return integral * h;
+    }
+
+    private static void UseInterlocked(double threadRes, ref double result)
+    {
+        double res = result;
+        double nRes = res + threadRes;
+        if (Interlocked.CompareExchange(ref result, nRes, res) != res) UseInterlocked(threadRes, ref result);
     }
 }
