@@ -26,20 +26,18 @@ public class DefiniteIntegral
             .ToList();
 
         barrier.SignalAndWait();
+        barrier.Dispose();
         return result;
     }
 
     public static double SolveSingleThread(double a, double b, Func<double, double> function, double step)
     {
-        int n = (int)Math.Ceiling((b - a) / step);
+        int n = Math.Max(1, (int)Math.Ceiling((b - a) / step));
         double h = (b - a) / n;
 
-        double integral = Enumerable.Range(1, n - 1)
-            .Select(i => a + i * h)
-            .Sum(i => function(i));
-
-        integral += (function(a) + function(b)) / 2;
-        return integral * h;
+        return Enumerable.Range(0, n)
+            .Select(i => h * (function(a + i * h) + function(a + (i + 1) * h)) / 2)
+            .Sum();
     }
 
     private static void UseInterlocked(double threadRes, ref double result)
