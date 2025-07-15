@@ -6,11 +6,15 @@ public class TestCommand : ICommand
 {
     public bool Executed { get; private set; }
     public void Execute()
-    => Executed = true;
+    {
+        Executed = true;
+    }
 }
 
 public class BadCommand : ICommand
 {
     public void Execute()
-    => throw new Exception("Сломанная команда выбросила ошибку");
+    {
+        throw new Exception("Сломанная команда выбросила ошибку");
+    }
 }

@@ -8,14 +8,16 @@ public class ServerThreadTests
     public void HardStop_Correct_Ex_not_from_server_thread()
     {
         var server = new ServerThread();
-        Assert.Throws<InvalidOperationException>(() => server.HardStop()).Message.Equals("Команда HardStop успешно выполняюется только в потоке, который она должна остановить"); ;
+        var ex = Assert.Throws<InvalidOperationException>(() => server.HardStop());
+        Assert.Equal("Команда HardStop успешно выполняюется только в потоке, который она должна остановить", ex.Message);
     }
 
     [Fact]
     public void SoftStop_Correct_Ex_not_from_server_thread()
     {
         var server = new ServerThread();
-        Assert.Throws<InvalidOperationException>(() => server.SoftStop()).Message.Equals("Команда SoftStop успешно выполняюется только в потоке, который она должна остановить");
+        var ex = Assert.Throws<InvalidOperationException>(() => server.SoftStop());
+        Assert.Equal("Команда SoftStop успешно выполняюется только в потоке, который она должна остановить", ex.Message);
     }
 
     [Fact]

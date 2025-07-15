@@ -25,8 +25,8 @@ public class ServerThread
     {
         if (Thread.CurrentThread != _thread) throw new InvalidOperationException("Команда HardStop успешно выполняюется только в потоке, который она должна остановить");
         _hardStop = true;
-        _started = false;
         _Commands.CompleteAdding();
+        _started = false;
         _thread.Interrupt();
     }
 
