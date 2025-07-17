@@ -9,7 +9,6 @@ public class ServerThread
     private readonly BlockingCollection<ICommand> _commands = [];
     private readonly Scheduler _scheduler = new();
     private readonly Thread _thread;
-    private readonly ManualResetEvent _commandAdded = new(false);
 
     public ServerThread()
     {
@@ -21,7 +20,6 @@ public class ServerThread
     {
         if (!_started) throw new InvalidOperationException("Поток не запущен");
         _commands.Add(command);
-        _commandAdded.Set(); 
     }
 
     public void HardStop()
@@ -60,8 +58,6 @@ public class ServerThread
                         catch (Exception ex) { ExceptionHandler.ProccesEx(command, ex); }
                     }
                 }
-                _commandAdded.Reset();
-                if (_commands.Count == 0 && !_scheduler.HasCommand()) _commandAdded.WaitOne(100);
             }
 
             if (!_hardStop)
