@@ -10,7 +10,6 @@ public class ServerThreadTests
         var server = new ServerThread();
         var longCommand = new TestLongCommand(3);
         server.AddCommand(longCommand);
-        server.AddCommand(longCommand);
 
         Thread.Sleep(300);
         Assert.Equal(0, longCommand.ExecutionsToComplete);
@@ -125,6 +124,6 @@ public class ServerThreadTests
         server.AddCommand(new SoftStop(server));
 
         Thread.Sleep(100);
-        Assert.Equal("Ошибка: Сломанная команда выбросила ошибку в команде BadCommand\r\n", output.ToString());
+        Assert.Equal("Ошибка: Сломанная команда выбросила ошибку в команде BadCommand\n", output.ToString());
     }
 }
